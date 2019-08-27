@@ -16,17 +16,17 @@
 -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.kirviq</groupId>
+	<groupId>com.github.dqbai</groupId>
 	<artifactId>dumbster</artifactId>
 	<version>1.8-SNAPSHOT</version>
 
 	<name>dumbster</name>
 	<description>a simple fake SMTP server for unit testing</description>
-	<url>https://github.com/kirviq/dumbster</url>
+	<url>https://github.com/dqbai/dumbster</url>
 
 	<licenses>
 		<license>
@@ -37,6 +37,10 @@
 	</licenses>
 
 	<developers>
+		<developer>
+			<name>Bai Dongqiang</name>
+			<url>https://github.com/dqbai</url>
+		</developer>
 		<developer>
 			<name>Joachim Nicolay</name>
 			<url>https://github.com/kirviq</url>
@@ -49,9 +53,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:kirviq/dumbster.git</connection>
-		<developerConnection>scm:git:git@github.com:kirviq/dumbster.git</developerConnection>
-		<url>git@github.com:kirviq/dumbster.git</url>
+		<connection>scm:git:git@github.com:dqbai/dumbster.git</connection>
+		<developerConnection>scm:git:git@github.com:dqbai/dumbster.git</developerConnection>
+		<url>git@github.com:dqbai/dumbster.git</url>
 	</scm>
 
 	<properties>
@@ -63,60 +67,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
+				<version>3.8.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<release>11</release>
 				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-				<configuration>
-					<archive>
-						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-					</archive>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>3.0.1</version>
-				<executions>
-					<execution>
-						<id>bundle-manifest</id>
-						<phase>process-classes</phase>
-						<goals>
-							<goal>manifest</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -127,19 +81,16 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.18</version>
 		</dependency>
-		<!--suppress NonOsgiMavenDependency -->
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.6</version>
-			<scope>provided</scope>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.9</version>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4</version> <!-- newer versions have a bug which strips the last CR when sending -->
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

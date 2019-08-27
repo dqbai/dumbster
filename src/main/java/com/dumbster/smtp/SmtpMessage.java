@@ -17,6 +17,7 @@
  */
 package com.dumbster.smtp;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -24,6 +25,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import javax.mail.internet.MimeUtility;
 
 /**
  * Container for a complete SMTP message - headers and message body.
@@ -145,4 +148,13 @@ public class SmtpMessage {
 		msg.append('\n');
 		return msg.toString();
 	}
+
+    public String getSubject() {
+        String subject = getHeaderValue("Subject");
+        try {
+            return MimeUtility.decodeText(subject);
+        } catch (UnsupportedEncodingException e) {
+            return subject;
+        }
+    }
 }

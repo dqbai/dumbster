@@ -1,33 +1,26 @@
 # dumbster
->> The Dumbster is a very simple fake SMTP server designed for unit and system testing applications that
->> send email messages. It responds to all standard SMTP commands but does not deliver messages to the user.
->> The messages are stored within the Dumbster for later extraction and verification.
+> The Dumbster is a very simple fake SMTP server designed for unit and system testing applications that
+> send email messages. It responds to all standard SMTP commands but does not deliver messages to the user.
+> The messages are stored within the Dumbster for later extraction and verification.
 >
-> **This repository is a fork of [http://quintanasoft.com/dumbster/](http://quintanasoft.com/dumbster/).**
+> **This repository is a fork of [https://github.com/kirviq/dumbster](https://github.com/kirviq/dumbster).**
 >
-> I forked it for two reasons:
-> 
-> 1. I wanted to have typed lists as return values.
-> 2. I wanted the server to be able to just pick a port itself and then tell me which port it got.
->
-> And while I'm at it, using slf4j instead of stdout is also nice.
->
-> Aside from that, the actual smtp logic is completely unchanged.
 
-I forked it for following reasons:
+I forked it with following changes:
 
-1. Prolonged socket timeout so that I can debug client side or server side.
-2. Using UTF-8 for default mail body encoding.
+1. Removed dependency on Project Lombok, Apache Felix.
+2. Upgrade Java compile level to Java 11.
+3. Changed mail encoding from ISO_8859_1 to UTF_8.
+4. Added method to get user's mail box.
+5. Added getSubject() to SmtpMessage.java
 
-Following ToDo...
-----------------
 ### Usage
 Add maven dependency:
 ```xml
 <dependency>
     <groupId>com.github.dqbai</groupId>
     <artifactId>dumbster</artifactId>
-    <version>1.7.1</version>
+    <version>1.8</version>
     <scope>test</scope>
 </dependency>
 ```
@@ -49,4 +42,4 @@ class SomeTest {
     }
 }
 ```
-See more examples in the included [unit tests](https://github.com/kirviq/dumbster/blob/master/src/test/java/com/dumbster/smtp/SimpleSmtpServerTest.java).
+See more examples in the included [unit tests](https://github.com/dqbai/dumbster/blob/master/src/test/java/com/dumbster/smtp/SimpleSmtpServerTest.java).
